@@ -1,14 +1,16 @@
 const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+const base = require("./webpack.config.base.js");
 
 module.exports = {
-  entry: "./src/index.js",
-  output: {
-    filename: "[name].[contenthash].js",
-    path: path.resolve(__dirname, "dist"),
-  },
+  ...base,
   mode: "development",
+  devServer: {
+    contentBase: path.join(__dirname, "dist"),
+    compress: true,
+    port: 9000,
+  },
   module: {
+    ...base.module,
     rules: [
       {
         test: /\.css$/i,
@@ -16,17 +18,4 @@ module.exports = {
       },
     ],
   },
-  devServer: {
-    contentBase: path.join(__dirname, "dist"),
-    compress: true,
-    port: 9000,
-  },
-  plugins: [
-    new HtmlWebpackPlugin({
-      // Also generate a test.html
-      filename: "test.html",
-      title: "aaa",
-      template: "src/assets/index.html",
-    }),
-  ],
 };
