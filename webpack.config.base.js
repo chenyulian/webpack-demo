@@ -10,6 +10,14 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.styl$/,
+        use: ["style-loader", "css-loader", "stylus-loader"],
+      },
+      {
+        test: /\.less$/,
+        use: ["style-loader", "css-loader", "less-loader"],
+      },
+      {
         test: /\.scss$/,
         use: [
           {
