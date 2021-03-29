@@ -1,4 +1,4 @@
 import x from "./x.js";
-import "./x.css";
+import "./x.scss";
 console.log(x);
 console.log("hiqqqqzz");
